@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import os
 import time
 from urllib.parse import urljoin, urlparse
-
+#apeksha 
 # 1. Seed URL
 seed_url = "https://iana.org/"
 
@@ -75,3 +75,4 @@ while queue and len(visited) < MAX_PAGES:
 print("\nCrawling Completed")
 print("Total pages crawled:", len(visited))
 print("Total unique URLs visited:", len(visited))
+print("Total unique URLs in queue:", len(queue))
