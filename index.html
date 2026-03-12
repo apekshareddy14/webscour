@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WebScour Search Engine</title>
+</head>
+
+<body>
+
+<h2>WebScour Search Engine</h2>
+
+<input type="text" id="query" placeholder="Enter search query">
+<button onclick="search()">Search</button>
+
+<div id="results"></div>
+
+<script>
+
+async function search() {
+
+    let query = document.getElementById("query").value;
+
+    let response = await fetch("http://127.0.0.1:8000/search?q=" + query);
+    let data = await response.json();
+
+    let resultsDiv = document.getElementById("results");
+    resultsDiv.innerHTML = "";
+
+    if(data.length === 0){
+        resultsDiv.innerHTML = "No results found";
+        return;
+    }
+
+    data.forEach(result => {
+
+        let p = document.createElement("p");
+        p.innerText = result.document + "  Score: " + result.score;
+
+        resultsDiv.appendChild(p);
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
